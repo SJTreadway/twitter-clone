@@ -4,9 +4,25 @@ $(document).ready(function() {
 		$(this).css('height', '5em');
 	});
 
-	$('.tweet-compose').on('blur', function() {
-		$('#tweet-controls').hide();
-		$(this).css('height', '2.5em');
+	$('.tweet-compose').on('keyup', function() {
+		var counter = 140 - $('.tweet-compose').val().length;
+		$('#char-count').text(counter);
+
+		if (counter <= 10) {
+			$('#char-count').css('color', 'red');
+		} else {
+			$('#char-count').css('color', '#999');
+		}
+
+		if (counter < 0) {
+			$('#tweet-submit').css('visibility', 'hidden');
+		} else {
+			$('#tweet-submit').css('visibility', 'visible');
+		}
+	});
+
+	$('#tweet-submit').on('click', function() {
+		$('#stream').prepend('#profile-summary', '.tweet-compose');
 	});
 
 
