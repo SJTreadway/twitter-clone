@@ -19,10 +19,14 @@ $(document).ready(function() {
 		} else {
 			$('#tweet-submit').css('visibility', 'visible');
 		}
-	});
+	});				
 
 	$('#tweet-submit').on('click', function() {
-		$('#stream').prepend('#profile-summary', '.tweet-compose');
+		$('#stream').prepend(function() {
+			var newTweetImg = "<img class='avatar' src='img/alagoon.jpg' />";
+			var newTweetFullName = "<strong class='fullname'>Steven Treadway</strong>";
+			return newTweetImg + newTweetFullName;
+		});
 	});
 
 
